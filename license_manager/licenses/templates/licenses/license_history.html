@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}License History{% endblock %}
+{% block content %}
+<h1>License History for Instance: {{ license.instance.name }}</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Created</th>
+      <th>Active</th>
+      <th>Env</th>
+      <th>Dates</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for lic in history %}
+      <tr>
+        <td>{{ lic.version_id }}</td>
+        <td>{{ lic.created_at }}</td>
+        <td>{% if lic.is_active %}✅{% else %}❌{% endif %}</td>
+        <td>{{ lic.environment_type }}</td>
+        <td>{{ lic.start_date }} → {{ lic.end_date }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'instance_detail' license.instance.id %}" class="btn btn-secondary">Back</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+<!-- templates/navbar.html -->
+<div class="sidebar">
+    <h4 class="text-center mb-4">🔒 License Manager</h4>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'clients_list' %}">Clients</a>
+    {% if request.user.is_superuser %}
+      <a href="#">Settings</a>
+    {% endif %}
+    <hr>
+    <div class="text-center small px-3">
+        Logged in as <strong>{{ request.user.username }}</strong>
+    </div>
+</div>

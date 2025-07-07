@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Clients{% endblock %}
+{% block content %}
+<h1>Clients</h1>
+<a href="{% url 'client_add' %}" class="btn btn-success mb-3">Add Client</a>
+<div class="row">
+  {% for client in clients %}
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card bg-primary text-white p-3 rounded-4">
+        <div class="d-flex justify-content-between">
+          <div>
+            <h5>{{ client.name }}</h5>
+            {% if client.is_active %}
+              <span class="text-success">Active:</span> {{ client.status_tag }}
+            {% else %}
+              <span class="badge bg-danger">Inactive</span>
+            {% endif %}
+          </div>
+          <a href="{% url 'client_detail' client.id %}" class="btn btn-light btn-sm">View</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

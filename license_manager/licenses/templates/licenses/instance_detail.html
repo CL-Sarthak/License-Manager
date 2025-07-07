@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Instance: {{ instance.name }}{% endblock %}
+{% block content %}
+<h1>{{ instance.name }}</h1>
+<p><strong>Client:</strong> {{ instance.client.name }}</p>
+<p><strong>Deployment:</strong> {{ instance.deployment_method }}</p>
+<p><strong>Start:</strong> {{ instance.start_date }}</p>
+<p><strong>End:</strong> {{ instance.end_date }}</p>
+<p><strong>Renewal:</strong> {{ instance.renewal_date }}</p>
+<p><strong>Notes:</strong> {{ instance.notes }}</p>
+
+<a href="{% url 'instance_edit' instance.id %}" class="btn btn-warning">Edit Instance</a>
+
+<h2 class="mt-4">Licenses</h2>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Version ID</th>
+      <th>Environment</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for license in licenses %}
+      <tr>
+        <td>{{ license.version_id }}</td>
+        <td>{{ license.environment_type }}</td>
+        <td>{{ license.start_date }}</td>
+        <td>{{ license.end_date }}</td>
+        <td>{{ license.is_active }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5">No licenses yet.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

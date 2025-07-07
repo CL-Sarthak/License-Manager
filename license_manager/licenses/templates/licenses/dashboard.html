@@ -1,0 +1,12 @@
+<!-- templates/licenses/dashboard.html -->
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="row">
+  <div class="col-md-3"><div class="card">Clients: {{ total_clients }}</div></div>
+  <div class="col-md-3"><div class="card">Instances: {{ total_instances }}</div></div>
+  <div class="col-md-3"><div class="card">Active Licenses: {{ active_licenses }}</div></div>
+  <div class="col-md-3"><div class="card">Renewals: {{ upcoming_renewals }}</div></div>
+</div>
+{% endblock %}
