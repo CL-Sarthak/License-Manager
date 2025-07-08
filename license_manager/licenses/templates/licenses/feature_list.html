@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-4xl mx-auto mt-10">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Features</h1>
+    <a href="{% url 'feature_create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
+      + Add
+    </a>
+  </div>
+
+  <table class="min-w-full bg-white rounded shadow">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b text-left">Name</th>
+        <th class="py-2 px-4 border-b text-left">Description</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for feature in features %}
+      <tr class="border-b">
+        <td class="py-2 px-4">{{ feature.name }}</td>
+        <td class="py-2 px-4">{{ feature.description|default:"—" }}</td>
+        <td class="py-2 px-4 text-center">
+          <a href="{% url 'feature_edit' feature.id %}" class="text-blue-500 hover:underline mr-3">Edit</a>
+          <a href="{% url 'feature_delete' feature.id %}" class="text-red-500 hover:underline">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="py-4 px-4 text-gray-500 text-center">No features found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

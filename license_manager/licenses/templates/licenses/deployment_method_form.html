@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto mt-10">
+  <h1 class="text-2xl font-bold mb-4">{{ form.instance.pk|yesno:"Edit Deployment Method,Create Deployment Method" }}</h1>
+  
+  <form method="post" class="space-y-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="flex justify-between">
+      <a href="{% url 'deployment_method_list' %}" class="text-gray-600 hover:text-black">← Back</a>
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

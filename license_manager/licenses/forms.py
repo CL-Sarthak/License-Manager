@@ -59,3 +59,21 @@ class LicenseReplaceForm(forms.ModelForm):
             'features': forms.SelectMultiple(attrs={'class': 'form-control'}),
             'version_id': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+from django import forms
+from .models import StatusTag, DeploymentMethod, Feature
+
+class StatusTagForm(forms.ModelForm):
+    class Meta:
+        model = StatusTag
+        fields = ['name']
+
+class DeploymentMethodForm(forms.ModelForm):
+    class Meta:
+        model = DeploymentMethod
+        fields = ['name', 'is_active']
+
+class FeatureForm(forms.ModelForm):
+    class Meta:
+        model = Feature
+        fields = ['name', 'description']

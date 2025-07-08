@@ -4,7 +4,7 @@
     <a href="{% url 'dashboard' %}">Dashboard</a>
     <a href="{% url 'clients_list' %}">Clients</a>
     {% if request.user.is_superuser %}
-      <a href="#">Settings</a>
+      <a href="{% url 'settings_home' %}">Settings</a>
     {% endif %}
     <hr>
     <div class="text-center small px-3">

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-3xl mx-auto mt-10">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Deployment Methods</h1>
+    <a href="{% url 'deployment_method_create' %}" class="bg-gray-800 hover:bg-gray-900 text-yellow-300 font-medium py-2 px-4 rounded shadow">
+  + Add
+</a>
+
+  </div>
+
+  <table class="min-w-full bg-white rounded shadow">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b text-left">Name</th>
+        <th class="py-2 px-4 border-b text-left">Active?</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for method in methods %}
+      <tr class="border-b">
+        <td class="py-2 px-4">{{ method.name }}</td>
+        <td class="py-2 px-4">{{ method.is_active|yesno:"Yes,No" }}</td>
+        <td class="py-2 px-4 text-center">
+          <a href="{% url 'deployment_method_edit' method.id %}" class="text-blue-500 hover:underline mr-3">Edit</a>
+          <a href="{% url 'deployment_method_delete' method.id %}" class="text-red-500 hover:underline">Delete</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3" class="py-4 px-4 text-gray-500 text-center">No deployment methods found.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

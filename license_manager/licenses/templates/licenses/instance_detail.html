@@ -10,6 +10,10 @@
 <p><strong>Notes:</strong> {{ instance.notes }}</p>
 
 <a href="{% url 'instance_edit' instance.id %}" class="btn btn-warning">Edit Instance</a>
+<a href="{% url 'client_detail' client.id %}" class="btn btn-secondary">← Back to Client</a>
+
+
+
 
 <h2 class="mt-4">Licenses</h2>
 <table class="table table-bordered">
